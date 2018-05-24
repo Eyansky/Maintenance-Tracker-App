@@ -99,6 +99,13 @@ body {
   margin-bottom: 20px;
 }
 
+.registerbox select {
+  width: 100%;
+  height: 30px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
 .registerbox input[type="text"], input[type="password"] {
   border: none;
   border-bottom: 1px solid #fff;
