@@ -45,6 +45,7 @@ body {
   border-radius: 20px;
   align-content: flex-end;
   display: inline;
+  float: right;
 }
 
 .header h3 {
