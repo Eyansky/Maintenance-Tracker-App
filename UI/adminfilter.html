@@ -20,19 +20,41 @@
         <div class="nav">
             <ul class="vertical-list">
                 <li>
-                    <a href='admindash.html' class='button active'>Dashboard</a>
+                    <a href='admindash.html' class='button '>Dashboard</a>
                 </li>
 
                 <li>
                     <a href='adminresolved.html' class='button'>Resolved</a>
                 </li>
                 <li>
-                    <a href='adminfilter.html' class='button'>Advanced Search</a>
+                    <a href='adminfilter.html' class='button active'>Advanced Search</a>
                 </li>
 
             </ul>
         </div>
         <div class="content">
+            <div class="filter">
+                <h2>Filter by:</h2>
+                <table>
+                    <tr>
+                        <th>Client</th>
+                        <th>Product</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Search by Client">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Search by Product">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Search by Details">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br>
             <div class="table-dash">
                 <table>
                     <tr>

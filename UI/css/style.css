@@ -1,5 +1,5 @@
 body {
-  background-color: #a8a6a6;
+  background-color: #b9b4b4;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.6em;
@@ -337,6 +337,7 @@ th {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 5px;
 }
 
 /* the numbers row */
@@ -350,17 +351,8 @@ th, table td {
   text-align: left;
 }
 
-td:first-child {
-  padding-top: 1rem;
-}
-
-td:last-child {
-  padding-bottom: 1rem;
-}
-
 td:before {
   font-weight: bold;
-  min-width: 8rem;
 }
 
 /* table buttons */
@@ -437,6 +429,8 @@ textarea {
 
 .detailsbuttons {
   margin: 20px;
+  width: 100%;
+  align-items: center;
 }
 
 .next {
@@ -464,11 +458,13 @@ small {
 
 .next {
   display: inline-block;
+  width: 40%;
   font-size: 20px;
-  padding: auto;
+  padding: 10px;
   margin: 0 0.1em 0.1em 0;
   border: 0.16em solid rgba(255, 255, 255, 0);
   border-radius: 2em;
+  border-color: #28b1de;
   box-sizing: border-box;
   color: #28b1de;
   text-align: center;
@@ -476,4 +472,19 @@ small {
 
 .next:hover {
   border-color: rgb(20, 245, 13);
+}
+
+/* filter search */
+
+.filter input {
+  width: 70%;
+}
+
+.filter input[type="text"] {
+  border: none;
+  border-bottom: 1px solid rgb(5, 5, 5);
+  background: transparent;
+  outline: none;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
 }
