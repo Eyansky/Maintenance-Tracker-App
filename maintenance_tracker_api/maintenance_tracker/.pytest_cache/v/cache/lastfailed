@@ -1,0 +1,15 @@
+{
+  "tests/test_users.py": true,
+  "tests/test_users.py::UserTests::test_exist_email": true,
+  "tests/test_users.py::UserTests::test_incomplete_creds": true,
+  "tests/test_users.py::UserTests::test_invalid_credentials": true,
+  "tests/test_users.py::UserTests::test_invalid_data_password_reset": true,
+  "tests/test_users.py::UserTests::test_invalid_old_password_reset": true,
+  "tests/test_users.py::UserTests::test_invalid_password": true,
+  "tests/test_users.py::UserTests::test_login": true,
+  "tests/test_users.py::UserTests::test_logout": true,
+  "tests/test_users.py::UserTests::test_password_reset": true,
+  "tests/test_users.py::UserTests::test_registration": true,
+  "tests/test_users.py::UserTests::test_validation_methods": true,
+  "tests/test_users.py::UserTests::test_wrong_registration": true
+}

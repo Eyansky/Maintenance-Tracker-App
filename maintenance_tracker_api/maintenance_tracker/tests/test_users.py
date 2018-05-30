@@ -4,7 +4,7 @@
 import unittest
 import json
 from maintenance_tracker.api import app
-from tests.test_api import MainTests
+from maintenance_tracker.tests.test_api import MainTests
 
 
 class UserTests(MainTests):
@@ -94,7 +94,7 @@ class UserTests(MainTests):
             Test Logout
         """
         response = self.app.post(self.url_prefix + 'auth/logout',
-                                 data={}, headers={'Authorization': self.test_token})
+                                 data={}, headers={'Authorization':})
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'You have successfully logged out', response.data)
 
@@ -106,7 +106,7 @@ class UserTests(MainTests):
             'old_password': self.sample_user['password'],  # Old password
             'new_password': 'abcd',
         }), content_type='application/json',
-            headers={'Authorization': self.test_token})
+            headers={'Authorization' })
         self.assertEqual(response.status_code, 201)
         self.assertIn(
             b'You have successfully changed your password', response.data)
@@ -119,7 +119,7 @@ class UserTests(MainTests):
             'old_password': 'xxxxxxxx',  # Invalid Old password
             'new_password': 'abcd',
         }), content_type='application/json',
-            headers={'Authorization': self.test_token})
+            headers={'Authorization': })
         self.assertEqual(response.status_code, 400)
         self.assertIn(
             b'Invalid old password', response.data)
@@ -131,7 +131,7 @@ class UserTests(MainTests):
         response = self.app.post(self.url_prefix + 'auth/reset-password', data=json.dumps({
             'new_password': '123456',
         }), content_type='application/json',
-            headers={'Authorization': self.test_token})
+            headers={'Authorization':})
         self.assertEqual(response.status_code, 400)
         self.assertIn(
             b'Please provide valid details', response.data)

@@ -1,7 +1,7 @@
 
 import unittest
 import json
-from maintenance-tracker.api import app
+from maintenance_tracker.api import app
 
 
 class MainTests(unittest.TestCase):
@@ -36,11 +36,4 @@ class MainTests(unittest.TestCase):
             'password': 'root',
             'confirm_password': 'root'
         }
-        
-        save_user = User()
-        save_user.save({
-            'username': self.sample_user['username'],
-            'email': self.sample_user['email'],
-            'password': self.sample_user['password'],
-            'confirm_password': self.sample_user['confirm_password']
-        })
+     self.tokens = tokens 
