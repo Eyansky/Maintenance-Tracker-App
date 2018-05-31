@@ -59,7 +59,7 @@ class TestUsers(unittest.TestCase):
                                  content_type="application/json")
         result = json.loads(response.data)
         self.assertEqual(result["status"], "wrong")
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 400)
 
 
 if __name__ == "__main__":
