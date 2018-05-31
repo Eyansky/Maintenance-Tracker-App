@@ -1,7 +1,8 @@
-from flask import Flask, jsonify
+from flask import Flask
+from flask_restful import Api
+from myapi.api.endpoints.users import UserRegister
 
 app = Flask(__name__)
+api = Api(app)
 
-@app.route("/")
-def index():
-    return jsonify({"hello":"you"})
+api.add_resource(UserRegister, '/api/v1/users/register')
