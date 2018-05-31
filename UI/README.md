@@ -1,6 +1,23 @@
 # Maintenance-Tracker-App
 
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+
 Maintenance Tracker App is an application that provides users with the ability to reach out to operations or repairs department regarding repair or maintenance requests and monitor the status of their request.
+
+# Live Preview
+
+```
+https://eyansky.github.io/Maintenance-Tracker-App/
+```
+
+# Admin Pages
+
+To log in as an Admin, use the following credentials.
+
+```
+username : admin
+password : root
+```
 
 # Features
 
@@ -16,9 +33,13 @@ The users can perform the following functions:
 
 # Getting Started
 
--git clone https://github.com/Eyansky/Maintenance-Tracker-App.git
+```
+$ https://github.com/Eyansky/Maintenance-Tracker-App.git
+```
 
--cd Maintenance-Tracker-App
+```
+$ cd Maintenance-Tracker-App.git
+```
 
 ## Prerequisites
 

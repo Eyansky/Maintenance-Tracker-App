@@ -21,22 +21,31 @@
             </p>
             <input type="submit" name="" onclick="window.location='register.html';" value="Register">
         </div>
-        <div class="loginbox">
-            <h1 id="login">Login Here</h1>
 
-            <p>Username</p>
-            <input type="text" name="" placeholder="Enter Username">
-            <p>Password</p>
-            <input type="password" name="" placeholder="Enter Password">
-            <input type="submit" name="" onclick="window.location='admindash.html';" value="Login">
+        <form id="login-form" method="post">
+            <div class="loginbox">
 
-            <a href="register.html">Don't have an account?</a>
+                <h1 id="login">Login Here</h1>
 
-        </div>
+                <p>Username</p>
+                <input type="text" id="username" placeholder="Enter Username" required>
+                <p>Password</p>
+                <input type="password" id="password" placeholder="Enter Password" required>
+                <input type="submit" name="" onclick="login()" value="Login">
+
+                <a href="register.html">Don't have an account?</a>
+
+            </div>
+        </form>
+
         <div class="fullbar footer">
             <p>Copyright &copy; Ian Eyansky</p>
         </div>
     </div>
+
+    <script src="js/login.js"></script>
+
+
 </body>
 
 </html>
