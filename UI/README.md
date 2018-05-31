@@ -10,6 +10,15 @@ Maintenance Tracker App is an application that provides users with the ability t
 https://eyansky.github.io/Maintenance-Tracker-App/
 ```
 
+# Admin Pages
+
+To log in as an Admin, use the following credentials.
+
+```
+username : admin
+password : root
+```
+
 # Features
 
 The users can perform the following functions:
