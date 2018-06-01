@@ -2,10 +2,15 @@ from flask_restful import Resource
 from flask_restful import reqparse
 from myapi.api.resources.serializers import user_serializer
 
+from myapi.api.resources.models import add_user, view_user
+
 class UserRegister(Resource):
     """
     Register a new user.
     """
+    def get(self):
+        return view_user()
+
 
     def post(self):
         """ Add a user """
@@ -31,5 +36,11 @@ class UserRegister(Resource):
             "username":username,
             "password":password
         }
-        return (data),201
+        # Add to database
+        add_user(data)
+        response = {
+            "status":"ok",
+            "message":"User has been Registered"
+        }
+        return (response),201
 
