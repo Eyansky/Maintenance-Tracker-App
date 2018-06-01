@@ -9,7 +9,7 @@ class UserRegister(Resource):
     Register a new user.
     """
     def get(self):
-        return view_user()
+        return (view_user()), 200
 
 
     def post(self):
