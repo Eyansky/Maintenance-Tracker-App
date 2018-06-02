@@ -1,8 +1,16 @@
 from flask import Flask
 from flask_restful import Api
-from myapi.api.endpoints.users import UserRegister
+from flask_jwt_extended import (
+    JWTManager, jwt_required, create_access_token,
+    get_jwt_identity
+)
+from myapi.api.endpoints.users import User_Register, User_Login
 
 app = Flask(__name__)
 api = Api(app)
 
-api.add_resource(UserRegister, '/api/v1/users/register')
+app.config['JWT_SECRET_KEY'] = 'ianeyansky'
+jwt = JWTManager(app)
+
+api.add_resource(User_Register, '/api/v1/users/register')
+api.add_resource(User_Login, '/api/v1/users/login')
