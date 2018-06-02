@@ -7,7 +7,7 @@ from flask_jwt_extended import (
 )
 
 
-from myapi.api.resources.models import add_user, view_users, view_username, view_password, login
+from myapi.api.resources.models import add_user, view_users, login
 
 
 class User_Register(Resource):
