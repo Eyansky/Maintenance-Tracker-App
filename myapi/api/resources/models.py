@@ -1,3 +1,6 @@
+"""
+The users Database
+"""
 users = [
     {
         "firstname": "wairimu",
