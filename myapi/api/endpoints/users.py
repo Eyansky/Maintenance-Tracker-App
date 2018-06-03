@@ -1,9 +1,11 @@
+"""
+Users endpoint
+"""
+
 from flask_restful import Resource
 from flask_restful import reqparse
-from myapi.api.resources.serializers import user_serializer
 from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token,
-    get_jwt_identity
+    create_access_token
 )
 
 from myapi.api.resources.models import add_user, view_users, login
@@ -74,7 +76,10 @@ class User_Login(Resource):
 
         if login(username, password) == True:
             access_token = create_access_token(identity=username)
-            return access_token, 200
+            return {
+                "status": "ok",
+                "auth_token": access_token
+            }, 200
         else:
             return {
                 "status": "Failed",
