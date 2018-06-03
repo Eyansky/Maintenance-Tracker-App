@@ -10,11 +10,13 @@ users = [
         "password": "wairimu"
     }
 ]
-
+requests =[]
 
 def add_user(data):
     users.append(data)
 
+def add_request(data):
+    requests.append(data)
 
 def view_users():
     return users
