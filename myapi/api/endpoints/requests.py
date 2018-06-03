@@ -2,17 +2,18 @@ from flask_restful import Resource
 from flask_restful import reqparse
 from myapi.api.resources.serializers import request_serializer
 from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token,
-    get_jwt_identity
+    jwt_required, get_jwt_identity
 )
 
-from myapi.api.resources.models import add_request, view_requests
+from myapi.api.resources.models import (
+    add_request, view_user_requests)
 
 
 class Create_Request(Resource):
     """
     Create a request
     """
+    @jwt_required
     def post(self):
         """ Add a request """
         parser = reqparse.RequestParser()
@@ -27,7 +28,9 @@ class Create_Request(Resource):
         args = parser.parse_args()
 
         title, request = args["title"], args["request"]
+        username = get_jwt_identity()
         data = {
+            "username": username,
             "title": title,
             "request": request
         }
@@ -40,5 +43,8 @@ class Create_Request(Resource):
         }
         return (response), 201
 
+    @jwt_required
     def get(self):
-        return (view_requests()), 200
+        username = get_jwt_identity()
+        result = view_user_requests(username)
+        return (result), 200
