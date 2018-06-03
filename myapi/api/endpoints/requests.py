@@ -6,7 +6,7 @@ from flask_jwt_extended import (
     get_jwt_identity
 )
 
-from myapi.api.resources.models import add_request
+from myapi.api.resources.models import add_request, view_requests
 
 
 class Create_Request(Resource):
@@ -39,3 +39,6 @@ class Create_Request(Resource):
             "message": "Request has been added"
         }
         return (response), 201
+
+    def get(self):
+        return (view_requests()), 200
