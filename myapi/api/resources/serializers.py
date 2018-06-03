@@ -10,3 +10,8 @@ user_serializer = {
     "username": fields.String,
     "password":fields.String
 }
+
+request_serializer = {
+    "Title":fields.String,
+    "Details":fields.String
+}
