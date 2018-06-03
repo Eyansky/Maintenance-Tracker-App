@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Maintenance Tracker App</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="fullbar header">
+            <h3>Maintenance Tracker App</h3>
+
+            <a class="userAdmin" href="usersdash.html"> Users Page</a>
+
+            <input align="left" type="submit" onclick="window.location='index.html';" name="" value="Log Out">
+        </div>
+
+        <div class="nav">
+            <ul class="vertical-list">
+                <li>
+                    <a href='admindash.html' class='button '>Dashboard</a>
+                </li>
+
+                <li>
+                    <a href='adminresolved.html' class='button'>Resolved</a>
+                </li>
+                <li>
+                    <a href='adminfilter.html' class='button active'>Advanced Search</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="content">
+            <div class="filter">
+                <h2>Filter by:</h2>
+                <table>
+                    <tr>
+                        <th>Client</th>
+                        <th>Product</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Search by Client">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Search by Product">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Search by Details">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div class="table-dash">
+                <table>
+                    <tr>
+                        <th class="no">No.</th>
+                        <th>Client</th>
+                        <th>Product</th>
+                        <th>Details</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr>
+                        <td class="no">1.</td>
+                        <td>John Doe</td>
+                        <td class="td"> Iphone service</td>
+                        <td class="td">I brought in my phone last week for repairs and there has not been any communication from you since
+                            then, whats going on.</td>
+                        <td>
+                            <input class="reply" type="submit" name="" onclick="window.location='adminDetails.html';" value="Details">
+                            <input class="approve" type="submit" name="" value="Approve">
+                            <input class="decline" type="submit" name="" value="Decline">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no.">2.</td>
+                        <td>John Mwingine</td>
+                        <td> Laptop Repair</td>
+                        <td class="td">I am asking for a friend. He dropped his laptop and its badly damaged. Can you fix it? Its a HP laptop.
+                            Thank you in advance.</td>
+                        <td>
+                            <input class="reply" type="submit" name="" onclick="window.location='adminDetails.html';" value="Details">
+                            <input class="approve" type="submit" name="" value="Approve">
+                            <input class="decline" type="submit" name="" value="Decline">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no.">3.</td>
+                        <td>Ian Eyansky</td>
+                        <td> HTC phone</td>
+                        <td class="td">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium est, pariatur quidem voluptatum
+                            aut necessitatibus quaerat doloribus corrupti reprehenderit sunt. Nobis rem distinctio iusto
+                            deleniti illo magni quo tenetur dolorum?</td>
+                        <td>
+                            <input class="reply" type="submit" name="" onclick="window.location='adminDetails.html';" value="Details">
+                            <input class="approve" type="submit" name="" value="Approve">
+                            <input class="decline" type="submit" name="" value="Decline">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no.">4.</td>
+                        <td>Mr Kevin</td>
+                        <td>Laptop Repair </td>
+                        <td class="td">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium est, pariatur quidem voluptatum
+                            aut necessitatibus quaerat doloribus corrupti reprehenderit sunt. Nobis rem distinctio iusto
+                            deleniti illo magni quo tenetur dolorum?</td>
+                        <td>
+                            <input class="reply" type="submit" name="" onclick="window.location='adminDetails.html';" value="Details">
+                            <input class="approve" type="submit" name="" value="Approve">
+                            <input class="decline" type="submit" name="" value="Decline">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no.">5.</td>
+                        <td>Jane Doe</td>
+                        <td> Handbag issues</td>
+                        <td class="td">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium est, pariatur quidem voluptatum
+                            aut necessitatibus quaerat doloribus corrupti reprehenderit sunt. Nobis rem distinctio iusto
+                            deleniti illo magni quo tenetur dolorum?</td>
+                        <td>
+                            <input class="reply" type="submit" name="" onclick="window.location='adminDetails.html';" value="Details">
+                            <input class="approve" type="submit" name="" value="Approve">
+                            <input class="decline" type="submit" name="" value="Decline">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no.">6.</td>
+                        <td>Kevin yule msee</td>
+                        <td> Camera Issues</td>
+                        <td class="td">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium est, pariatur quidem voluptatum
+                            aut necessitatibus quaerat doloribus corrupti reprehenderit sunt. Nobis rem distinctio iusto
+                            deleniti illo magni quo tenetur dolorum?</td>
+                        <td>
+                            <input class="reply" type="submit" name="" onclick="window.location='adminDetails.html';" value="Details">
+                            <input class="approve" type="submit" name="" value="Approve">
+                            <input class="decline" type="submit" name="" value="Decline">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no.">7.</td>
+                        <td>Laurence David</td>
+                        <td> Iphone repair</td>
+                        <td class="td">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium est, pariatur quidem voluptatum
+                            aut necessitatibus quaerat doloribus corrupti reprehenderit sunt. Nobis rem distinctio iusto
+                            deleniti illo magni quo tenetur dolorum?</td>
+                        <td>
+                            <input class="reply" type="submit" name="" onclick="window.location='adminDetails.html';" value="Details">
+                            <input class="approve" type="submit" name="" value="Approve">
+                            <input class="decline" type="submit" name="" value="Decline">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no.">8.</td>
+                        <td>David the King</td>
+                        <td> Macbook failure </td>
+                        <td class="td">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium est, pariatur quidem voluptatum
+                            aut necessitatibus quaerat doloribus corrupti reprehenderit sunt. Nobis rem distinctio iusto
+                            deleniti illo magni quo tenetur dolorum?</td>
+                        <td>
+                            <input class="reply" type="submit" name="" onclick="window.location='adminDetails.html';" value="Details">
+                            <input class="approve" type="submit" name="" value="Approve">
+                            <input class="decline" type="submit" name="" value="Decline">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="no.">9.</td>
+                        <td>Jeremiah Goliath</td>
+                        <td> Macbook repair</td>
+                        <td class="td"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium est, pariatur quidem voluptatum
+                            aut necessitatibus quaerat doloribus corrupti reprehenderit sunt. Nobis rem distinctio iusto
+                            deleniti illo magni quo tenetur dolorum?</td>
+                        <td>
+                            <input class="reply" type="submit" name="" onclick="window.location='adminDetails.html';" value="Details">
+                            <input class="approve" type="submit" name="" value="Approve">
+                            <input class="decline" type="submit" name="" value="Decline">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="fullbar footer">
+            <p>Copyright &copy; Ian Eyansky</p>
+        </div>
+</body>
+
+</html>
