@@ -6,6 +6,7 @@ from flask_jwt_extended import (
 )
 from myapi.api.endpoints.users import User_Register, User_Login
 from myapi.api.endpoints.requests import Create_Request
+from myapi.api.endpoints.single_request import SingleRequest
 
 app = Flask(__name__)
 api = Api(app)
@@ -16,3 +17,4 @@ jwt = JWTManager(app)
 api.add_resource(User_Register, '/api/v1/users/register')
 api.add_resource(User_Login, '/api/v1/users/login')
 api.add_resource(Create_Request, '/api/v1/users/requests')
+api.add_resource(SingleRequest, '/api/v1/users/requests/<int:id>')
