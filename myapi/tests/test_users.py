@@ -57,7 +57,7 @@ class TestUsers(unittest.TestCase):
 
     def test_view_all_users(self):
         """
-        Test for successful registration
+        Test for view all users
         """
         response = self.app.get('api/v1/users/register',
                                 data=json.dumps(self.data),
