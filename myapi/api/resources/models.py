@@ -21,6 +21,9 @@ def add_request(data):
 def view_users():
     return users
 
+def view_requests():
+    return requests
+
 
 def login(username, password):
     for i in users:
