@@ -6,7 +6,6 @@ from flask_jwt_extended import (
     get_jwt_identity
 )
 
-
 from myapi.api.resources.models import add_user, view_users, login
 
 
