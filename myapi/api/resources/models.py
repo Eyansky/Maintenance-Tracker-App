@@ -35,11 +35,14 @@ def get_request_id(username, id):
     return result
 
 
+def edit_request(username, id, title, request):
+    result = get_request_id(username, id)
+    result['title'] = title
+    result['request'] = request
+
+
 def view_users():
     return users
-
-
-
 
 def login(username, password):
     for i in users:

@@ -114,6 +114,43 @@ class TestRequests(unittest.TestCase):
         )
         self.assertEqual(response.status_code, 404)
 
+    def test_edit_fail(self):
+        """
+        Test for edit id non existent
+        """
+
+        headers = {
+            'Authorization': 'Bearer {}'.format(self.token)
+        }
+        response = self.app.put(
+            '/api/v1/users/requests/123233',
+            headers=headers
+        )
+        self.assertEqual(response.status_code, 404)
+
+    def test_edit_request(self):
+        """
+        Test for successful edit
+        """
+        headers = {
+            'Authorization': 'Bearer {}'.format(self.token)
+        }
+        self.app.post(
+            '/api/v1/users/requests',
+            data=json.dumps(self.request),
+            content_type='application/json',
+            headers=headers
+        )
+        response = self.app.put(
+            '/api/v1/users/requests/1',
+            data=json.dumps(self.request),
+            content_type='application/json',
+            headers=headers
+        )
+        result = json.loads(response.data.decode())
+        self.assertEqual(result["status"], "ok")
+        self.assertEqual(response.status_code, 201)
+
 
 if __name__ == "__main__":
     unittest.main()
