@@ -26,6 +26,7 @@ def view_user_requests(username):
     request = [
         request for request in requests if request["username"] == username]
     return request
+    
 
 
 def get_request_id(username, id):

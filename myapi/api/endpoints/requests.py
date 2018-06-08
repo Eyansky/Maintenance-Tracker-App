@@ -5,7 +5,7 @@ from flask_jwt_extended import (
     jwt_required, get_jwt_identity
 )
 
-from myapi.api.resources.models import (
+from myapi.api.database.db import (
     add_request, view_user_requests)
 
 

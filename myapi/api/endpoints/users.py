@@ -7,8 +7,8 @@ from flask_restful import reqparse
 from flask_jwt_extended import (
     create_access_token
 )
-
-from myapi.api.resources.models import add_user, view_users, login
+from flask import request
+from myapi.api.database.db import add_user, view_users, login
 
 
 class User_Register(Resource):
@@ -23,18 +23,16 @@ class User_Register(Resource):
         """ Add a user """
         parser = reqparse.RequestParser()
         parser.add_argument("firstname",
-                            required=True,
-                            help="Enter first name")
+                            help="Enter first name",
+                            location="json")
         parser.add_argument("lastname",
-                            required=True,
-                            help="Enter last name")
+                            help="Enter last name",
+                            location="json")
         parser.add_argument("username",
-                            required=True,
-                            help="Enter username.")
-        parser.add_argument(
-            "password",
-            required=True,
-            help="Enter password.")
+                            help="Enter username.",
+                            location="json")
+        parser.add_argument("password",
+                            help="Enter password.")
         args = parser.parse_args()
         firstname, lastname,  username, password = args["firstname"], args[
             "lastname"], args["username"], args["password"]
@@ -42,6 +40,7 @@ class User_Register(Resource):
             "firstname": firstname,
             "lastname": lastname,
             "username": username,
+            "role":"user",
             "password": password
         }
         # Add to database
@@ -85,3 +84,5 @@ class User_Login(Resource):
                 "status": "Failed",
                 "message": "Invalid credentials"
             }, 400
+
+    

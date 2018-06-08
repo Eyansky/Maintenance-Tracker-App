@@ -5,6 +5,7 @@ Main Test  for users
 import json
 import unittest
 from myapi.api import app
+from myapi.api.database.db import add_user, view_users, login
 
 
 class TestUsers(unittest.TestCase):
