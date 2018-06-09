@@ -5,8 +5,7 @@ from flask_jwt_extended import (
     get_jwt_identity
 )
 from myapi.api.endpoints.users import User_Register, User_Login
-from myapi.api.endpoints.requests import Create_Request
-from myapi.api.endpoints.single_request import SingleRequest
+from myapi.api.endpoints.requests import Create_Request, SingleRequest
 
 app = Flask(__name__)
 api = Api(app)
