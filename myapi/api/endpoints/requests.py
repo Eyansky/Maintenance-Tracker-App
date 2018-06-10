@@ -16,4 +16,16 @@ class Request(Resource):
         result = allrequests(username)
         return (result), 200
 
+
+    # single request
+    @jwt_required
+    def get(self, id):
+        username = get_jwt_identity()
+        request = get_request_id(username, id)
+        if not request:
+            return {
+                "status": "err",
+                "message": "Reqeust not found"
+            }, 404
+        return (request), 200 
   
