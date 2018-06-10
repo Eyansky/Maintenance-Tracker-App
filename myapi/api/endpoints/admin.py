@@ -14,3 +14,36 @@ class admin(Resource):
     def get(self):
         result = adminrequests()
         return (result), 200
+    
+class AdminApprove(Resource):
+
+    def is_valid(item):
+        """ 
+        checking for valid credentials
+        """
+        errors = {}
+        if not item.get("id"):
+            errors["id"] = "Id is required."
+
+        return len(errors) == 0, errors
+    
+    @jwt_required
+    def put(self):
+        if request.is_json:
+            valid, errors = self.is_valid(request.json)
+            if not valid:
+                return {"status": "error", "data": errors}, 400
+            result = request.json
+            
+            id=result['id']
+            status="Approved"
+
+            request = {
+                "id": id,
+                "status": status}
+            # Approve to db
+            state = adminApproveDisapprove(request)
+
+            return {"status": "success", "details": state}, 201
+        else:
+            return {"message": "Request should be in JSON", "status": "error"}, 400
