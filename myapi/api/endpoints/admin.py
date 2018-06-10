@@ -81,3 +81,41 @@ class AdminDisaprove(Resource):
         else:
             return {"message": "Request should be in JSON", "status": "error"}, 400
 
+class AdminResolve(Resource):
+
+    def is_valid(item):
+        """ 
+        checking for valid credentials
+        """
+        errors = {}
+        if not item.get("id"):
+            errors["id"] = "Id is required."
+        
+        if not item.get("resolve"):
+            errors["resolve"] = "Resolution is required."
+
+        return len(errors) == 0, errors
+    
+    @jwt_required
+    def put(self):
+        if request.is_json:
+            valid, errors = self.is_valid(request.json)
+            if not valid:
+                return {"status": "error", "data": errors}, 400
+            result = request.json
+            
+            id=result['id']
+            resolve=result['resolve']
+            status="Resolved"
+
+            request = {
+                "id": id,
+                "resolve":resolve,
+                "status": status}
+            # Approve to db
+            state = adminApproveDisapprove(request)
+
+            return {"status": "success", "details": state}, 201
+        else:
+            return {"message": "Request should be in JSON", "status": "error"}, 400
+
