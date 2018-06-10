@@ -1,7 +1,7 @@
 import psycopg2
 from config import config
- 
- 
+
+
 def create_tables():
     """ 
     create tables in the database
@@ -22,11 +22,12 @@ def create_tables():
             id SERIAL PRIMARY KEY,
             username VARCHAR(50) NOT NULL,
             title VARCHAR(100) NOT NULL,
-            request VARCHAR(100) NOT NULL
-            
+            request VARCHAR(100) NOT NULL,
+            status VARCHAR(50) NOT NULL, 
+            resolve VARCHAR(100)
             )
         """
-        
+
     )
 
     conn = None
@@ -48,7 +49,7 @@ def create_tables():
     finally:
         if conn is not None:
             conn.close()
- 
- 
+
+
 if __name__ == '__main__':
     create_tables()
