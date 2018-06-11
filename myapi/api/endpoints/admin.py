@@ -1,10 +1,9 @@
 from flask_restful import Resource
 from flask import request
-import requests
 from flask_jwt_extended import JWTManager, jwt_required, \
     create_access_token, get_jwt_identity, get_jwt_claims
 
-from myapi.api.database.models import add_request, allrequests, adminrequests, adminApproveDisapprove
+from myapi.api.database.models import add_request, allrequests, adminrequests, adminApproveDisapprove, roles, AdminResolve
 
 
 class admin(Resource):
@@ -12,9 +11,15 @@ class admin(Resource):
     # all requests  for admin
     @jwt_required
     def get(self):
-        result = adminrequests()
-        return (result), 200
-    
+        username = get_jwt_identity()
+        role = roles(username)
+        if role == Admin:
+            result = adminrequests()
+            return (result), 200
+        else:
+            return {"status": "Only Admins allowed"}
+
+
 class AdminApprove(Resource):
 
     def is_valid(item):
@@ -26,27 +31,33 @@ class AdminApprove(Resource):
             errors["id"] = "Id is required."
 
         return len(errors) == 0, errors
-    
+
     @jwt_required
-    def put(self):
-        if request.is_json:
-            valid, errors = self.is_valid(request.json)
-            if not valid:
-                return {"status": "error", "data": errors}, 400
-            result = request.json
-            
-            id=result['id']
-            status="Approved"
+    def put(self, id):
+        username = get_jwt_identity()
+        role = roles(username)
+        if role == Admin:
+            if self.request.is_json:
+                valid, errors = self.is_valid(self.request.json)
+                if not valid:
+                    return {"status": "error", "data": errors}, 400
+                result = self.request.json
 
-            request = {
-                "id": id,
-                "status": status}
-            # Approve to db
-            state = adminApproveDisapprove(request)
+                id = result['id']
+                status = "Approved"
 
-            return {"status": "success", "details": state}, 201
+                request = {
+                    "id": id,
+                    "status": status}
+                # Approve to db
+                state = adminApproveDisapprove(request)
+
+                return {"status": "success", "details": state}, 201
+            else:
+                return {"message": "Request should be in JSON", "status": "error"}, 400
         else:
-            return {"message": "Request should be in JSON", "status": "error"}, 400
+            return {"status": "Only Admins allowed"}
+
 
 class AdminDisaprove(Resource):
 
@@ -59,27 +70,33 @@ class AdminDisaprove(Resource):
             errors["id"] = "Id is required."
 
         return len(errors) == 0, errors
-    
+
     @jwt_required
-    def put(self):
-        if request.is_json:
-            valid, errors = self.is_valid(request.json)
-            if not valid:
-                return {"status": "error", "data": errors}, 400
-            result = request.json
-            
-            id=result['id']
-            status="Disapproved"
+    def put(self, id):
+        username = get_jwt_identity()
+        role = roles(username)
+        if role == Admin:
+            if self.request.is_json:
+                valid, errors = self.is_valid(self.request.json)
+                if not valid:
+                    return {"status": "error", "data": errors}, 400
+                result = self.request.json
 
-            request = {
-                "id": id,
-                "status": status}
-            # Approve to db
-            state = adminApproveDisapprove(request)
+                id = result['id']
+                status = "Disapproved"
 
-            return {"status": "success", "details": state}, 201
+                request = {
+                    "id": id,
+                    "status": status}
+                # Approve to db
+                state = adminApproveDisapprove(request)
+
+                return {"status": "success", "details": state}, 201
+            else:
+                return {"message": "Request should be in JSON", "status": "error"}, 400
         else:
-            return {"message": "Request should be in JSON", "status": "error"}, 400
+            return {"status": "Only Admins allowed"}
+
 
 class AdminResolve(Resource):
 
@@ -90,32 +107,36 @@ class AdminResolve(Resource):
         errors = {}
         if not item.get("id"):
             errors["id"] = "Id is required."
-        
+
         if not item.get("resolve"):
             errors["resolve"] = "Resolution is required."
 
         return len(errors) == 0, errors
-    
+
     @jwt_required
-    def put(self):
-        if request.is_json:
-            valid, errors = self.is_valid(request.json)
-            if not valid:
-                return {"status": "error", "data": errors}, 400
-            result = request.json
-            
-            id=result['id']
-            resolve=result['resolve']
-            status="Resolved"
+    def put(self, item):
+        username = get_jwt_identity()
+        role = roles(username)
+        if role == Admin:
+            if self.request.is_json:
+                valid, errors = self.is_valid(self.request.json)
+                if not valid:
+                    return {"status": "error", "data": errors}, 400
+                result = self.request.json
 
-            request = {
-                "id": id,
-                "resolve":resolve,
-                "status": status}
-            # Approve to db
-            state = adminApproveDisapprove(request)
+                id = result['id']
+                resolve = result['resolve']
+                status = "Resolved"
 
-            return {"status": "success", "details": state}, 201
+                request = {
+                    "id": id,
+                    "resolve": resolve,
+                    "status": status}
+                # Approve to db
+                state = AdminResolve(request)
+
+                return {"status": "success", "details": state}, 201
+            else:
+                return {"message": "Request should be in JSON", "status": "error"}, 400
         else:
-            return {"message": "Request should be in JSON", "status": "error"}, 400
-
+            return {"status": "Only Admins allowed"}

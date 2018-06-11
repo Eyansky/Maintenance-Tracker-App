@@ -3,6 +3,7 @@ Users endpoint
 """
 from flask_restful import Resource
 from flask import request
+from werkzeug.security import generate_password_hash, check_password_hash
 from myapi.api.database.models import add_user, login, add_request
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
@@ -11,8 +12,34 @@ from flask_jwt_extended import (
 
 class UserRegister(Resource):
     """
-    Register a new user.
-    """
+        Register a new user.
+        ---
+        tags:
+            - The Users API
+        parameters:
+            - in: formData
+            name: firstname
+            type: string
+            required: true
+
+            - in: formData
+            name: lastname
+            type: string
+            required: true
+
+            - in: formData
+            name: username
+            type: string
+            required: true
+
+            - in: formData
+            name: password
+            type: string
+            required: true
+        responses:
+            201:
+            description: User Has been created.
+        """
 
     def is_valid(self, item):
         """
@@ -48,7 +75,7 @@ class UserRegister(Resource):
             lastname = result['lastname']
             username = result['username']
             role = "user"
-            password = result['password']
+            password = generate_password_hash(result['password'])
 
             user = {
                 "firstname": firstname,
@@ -59,7 +86,7 @@ class UserRegister(Resource):
             # add to database
             add_user(user)
 
-            return {"status": "ok", "auth": "User Has beeen created"}, 201
+            return {"status": "ok", "description": "User Has been created"}, 201
         else:
             return {"message": "Request should be in JSON",
                     "status": "error"}, 400
@@ -67,8 +94,25 @@ class UserRegister(Resource):
 
 class UserLogin(Resource):
     """
-    Login a new user.
-    """
+       Login a new user.
+      ---
+      tags:
+           - The Users API
+      parameters:
+
+        - in: formData
+          name: username
+          type: string
+          required: true
+
+        - in: formData
+          name: password
+          type: string
+          required: true
+      responses:
+        202:
+          description: accepted.
+       """
 
     def is_valid(self, item):
         """
@@ -105,18 +149,19 @@ class UserLogin(Resource):
                     "message": "User has not been Registered"
                 }
                 return response, 404
-            elif details[4] != password:
+            
+            elif check_password_hash(details[4], password):
+                username = details[2]
+                access_token = create_access_token(identity=username)
+                response = {
+                    "status": "accepted",
+                    "description": "User has been created",
+                    "message": access_token
+                }
+                return response, 202
+            else:
                 response = {
                     "status": "Failed Dependency",
                     "message": "wrong password"
                 }
                 return response, 424
-            elif details[4] == password:
-                username = details[2]
-                access_token = create_access_token(identity=username)
-                response = {
-                    "status": "accepted",
-                    "message": access_token
-                }
-                return response, 202
-
